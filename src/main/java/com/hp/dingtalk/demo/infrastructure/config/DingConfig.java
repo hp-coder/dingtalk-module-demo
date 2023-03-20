@@ -11,6 +11,7 @@ import java.util.Collections;
 
 /**
  * 配置类
+ * 或者更简化使用匿名内部类来注册bean，这里为了方便理解，还是通过完整实现类注册
  * @author hp 2023/3/17
  */
 @Configuration
@@ -23,15 +24,20 @@ public class DingConfig {
      */
     @Bean
     public IDingBot testBot(){
+        // TODO change the constructor parameters to your own DingTalk application info. app name is for log.
+        // Note that the app name is only for logging readability and is fully customizable by you
         return new TestBot("custom app name",16757015L,"your app key","your app secret");
     }
 
     /**
      * 如果要做环境隔离，使用此方式配置
      * 否则硬编码+component或者通过configurationProperties自动配置也行
+     *
      */
     @Bean
     public IDingInteractiveCardCallBack dummyInteractiveCardCallback(){
+        // TODO change the constructor parameters to your own custom configuration.
+        // Note that the third parameter, robots on your DingTalk, indicates that those robots will be used to register callback url when the system is ready.
         return new DummyInteractiveCardCallback("your callback route key(no space)", "http://sdavw8.natappfree.cc/dummy/test/callback", Collections.singletonList(TestBot.class));
     }
 }

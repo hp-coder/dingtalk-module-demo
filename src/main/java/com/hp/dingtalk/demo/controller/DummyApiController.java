@@ -38,7 +38,7 @@ public class DummyApiController {
     public String testSendInteractiveCardMessage() {
         final DingBotMessageHandler dingBotMessageHandler = new DingBotMessageHandler();
         final DingUserHandler dingUserHandler = new DingUserHandler();
-        final DummyInteractiveCard card = new DummyInteractiveCard(dummyInteractiveCardCallback.getCallbackRouteKey(), String.valueOf(System.currentTimeMillis()))
+        final DummyInteractiveCard card = new DummyInteractiveCard(dummyInteractiveCardCallback, String.valueOf(System.currentTimeMillis()))
                 .setDummyName(" Hello Human ")
                 .setOtherInformation(" Surprise Mother发卡... ")
                 .setButton(0);

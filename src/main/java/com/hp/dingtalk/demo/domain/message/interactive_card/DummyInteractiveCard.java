@@ -1,6 +1,7 @@
 package com.hp.dingtalk.demo.domain.message.interactive_card;
 
 import com.hp.dingding.pojo.message.interactive.AbstractDingInteractiveMsg;
+import com.hp.dingding.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -22,9 +23,10 @@ public class DummyInteractiveCard extends AbstractDingInteractiveMsg {
 
 
     /**
-     * 模版id可以写死或者通过暂时自己实现动态配置
+     * 模版id可以写死或者暂时自己实现动态配置
      */
-    public DummyInteractiveCard(String callbackRouteKey, String outTrackId) {
-        super(callbackRouteKey, outTrackId, "your interactive card template id");
+    public DummyInteractiveCard(IDingInteractiveCardCallBack callBack, String outTrackId) {
+        // TODO change the templateId parameter to your own template id that you previously created on the DingTalk interactive card platform.
+        super(callBack, outTrackId, "your interactive card template id");
     }
 }
