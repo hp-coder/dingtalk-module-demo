@@ -43,6 +43,7 @@ public class DummyApiController {
                 .setOtherInformation(" Surprise Mother发卡... ")
                 .setButton(0);
         final TestBot app = DingAppFactory.app(TestBot.class);
+        // TODO change the second parameter to a phone number that exists in your organization.
         final String dingTalkUserId = dingUserHandler.findUserIdByMobile(app, "The phone number that equals the phone number on the DingTalk profile");
         final String outTrackId = dingBotMessageHandler.sendInteractiveMsgToIndividual(app, Collections.singletonList(dingTalkUserId), card);
         LOCAL_CACHE.putIfAbsent(outTrackId, card);
