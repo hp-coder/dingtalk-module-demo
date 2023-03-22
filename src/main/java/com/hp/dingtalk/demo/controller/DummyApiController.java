@@ -2,7 +2,7 @@ package com.hp.dingtalk.demo.controller;
 
 import com.google.gson.Gson;
 import com.hp.dingding.component.factory.DingAppFactory;
-import com.hp.dingding.pojo.bot.DingInteractiveCardCallBackPayload;
+import com.hp.dingding.pojo.callback.DingInteractiveCardCallBackPayload;
 import com.hp.dingding.pojo.message.interactive.IDingInteractiveMsg;
 import com.hp.dingding.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
 import com.hp.dingding.service.message.DingBotMessageHandler;
