@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @ComponentScan("com.hp")
 @SpringBootApplication
-public class DingTalkDemoApplication {
+public class  DingTalkDemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(DingTalkDemoApplication.class, args);
     }

@@ -1,5 +1,6 @@
 package com.hp.dingtalk.demo.controller;
 
+import com.dingtalk.api.response.OapiV2UserGetResponse;
 import com.google.gson.Gson;
 import com.hp.dingding.component.factory.DingAppFactory;
 import com.hp.dingding.pojo.callback.DingInteractiveCardCallBackPayload;
@@ -7,6 +8,8 @@ import com.hp.dingding.pojo.message.interactive.IDingInteractiveMsg;
 import com.hp.dingding.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
 import com.hp.dingding.service.message.DingBotMessageHandler;
 import com.hp.dingding.service.user.DingUserHandler;
+import com.hp.dingtalk.demo.domain.login.request.DingTalkLoginRequest;
+import com.hp.dingtalk.demo.domain.login.service.DingTalkLoginService;
 import com.hp.dingtalk.demo.domain.message.interactive_card.DummyInteractiveCard;
 import com.hp.dingtalk.demo.domain.robot.TestBot;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +34,7 @@ import java.util.Map;
 public class DummyApiController {
 
     private final IDingInteractiveCardCallBack dummyInteractiveCardCallback;
+    private final DingTalkLoginService dingTalkLoginService;
 
     private static final Map<String, IDingInteractiveMsg> LOCAL_CACHE = new HashMap<>(16);
 
@@ -64,5 +68,16 @@ public class DummyApiController {
                 .setButton(1);
         // openConversationId 为null 钉钉根据卡片实例id更新卡片
         new DingBotMessageHandler().updateInteractiveMsg(DingAppFactory.app(TestBot.class), null, msg);
+    }
+
+
+    @PostMapping("/test/login")
+    public String login(@RequestBody DingTalkLoginRequest request) {
+        final OapiV2UserGetResponse.UserGetResponse userGetResponse = dingTalkLoginService.queryDingDing(request);
+        final String userid = userGetResponse.getUserid();
+        /*
+            ...后续查询系统用户信息校验等等
+         */
+        return "token:" + userid;
     }
 }
