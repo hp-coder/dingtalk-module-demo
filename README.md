@@ -112,11 +112,14 @@ export default {
   name: "Login",
   data() {
     return {
+      appKey:"your app key",
+      dingRedirectUrl: encodeURIComponent("your login page uri"),
+      corpId: "your corp id", 
       dingTalkLoginPage: true
     }
   },
   mounted() {
-    //如果用账号密码 走其他流程
+    //如果用账号密码 走其他流程z
 
     //钉钉登录
     const {code, authCode, state} = this.$route.query;
