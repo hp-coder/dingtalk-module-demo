@@ -5,7 +5,7 @@ import com.aliyun.dingtalkoauth2_1_0.models.GetUserTokenResponseBody;
 import com.dingtalk.api.response.OapiV2UserGetResponse;
 import com.dingtalk.api.response.OapiV2UserGetuserinfoResponse;
 import com.hp.dingding.component.application.IDingMiniH5;
-import com.hp.dingding.component.factory.DingAppFactory;
+import com.hp.dingding.component.factory.app.DingAppFactory;
 import com.hp.dingding.service.IDingLoginHandler;
 import com.hp.dingding.service.IDingUserHandler;
 import com.hp.dingding.service.contact.DingContactHandler;

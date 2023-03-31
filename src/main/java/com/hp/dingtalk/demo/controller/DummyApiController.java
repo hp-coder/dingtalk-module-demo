@@ -2,8 +2,8 @@ package com.hp.dingtalk.demo.controller;
 
 import com.dingtalk.api.response.OapiV2UserGetResponse;
 import com.google.gson.Gson;
-import com.hp.dingding.component.factory.DingAppFactory;
-import com.hp.dingding.pojo.callback.DingInteractiveCardCallBackPayload;
+import com.hp.dingding.component.factory.app.DingAppFactory;
+import com.hp.dingding.pojo.callback.DingInteractiveCardCallBackRequest;
 import com.hp.dingding.pojo.message.interactive.IDingInteractiveMsg;
 import com.hp.dingding.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
 import com.hp.dingding.service.message.DingBotMessageHandler;
@@ -55,9 +55,9 @@ public class DummyApiController {
     }
 
     @PostMapping("/test/callback")
-    public void testUpdateInteractiveCardMessage(@RequestBody DingInteractiveCardCallBackPayload payload) {
-        log.info("callback payload: {}", new Gson().toJson(payload));
-        final String outTrackId = payload.getOutTrackId();
+    public void testUpdateInteractiveCardMessage(@RequestBody DingInteractiveCardCallBackRequest request) {
+        log.info("callback payload: {}", new Gson().toJson(request));
+        final String outTrackId = request.getOutTrackId();
         final IDingInteractiveMsg msg = LOCAL_CACHE.get(outTrackId);
         if (!(msg instanceof DummyInteractiveCard)) {
             return;
