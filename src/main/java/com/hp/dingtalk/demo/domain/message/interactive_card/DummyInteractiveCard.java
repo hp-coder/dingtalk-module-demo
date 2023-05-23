@@ -1,7 +1,7 @@
 package com.hp.dingtalk.demo.domain.message.interactive_card;
 
-import com.hp.dingding.pojo.message.interactive.AbstractDingInteractiveMsg;
-import com.hp.dingding.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
+import com.hp.dingtalk.pojo.message.interactive.AbstractDingInteractiveMsg;
+import com.hp.dingtalk.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

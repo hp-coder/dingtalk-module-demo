@@ -1,6 +1,6 @@
 package com.hp.dingtalk.demo.domain.app;
 
-import com.hp.dingding.component.application.IDingMiniH5;
+import com.hp.dingtalk.component.application.IDingMiniH5;
 import lombok.Getter;
 
 /**

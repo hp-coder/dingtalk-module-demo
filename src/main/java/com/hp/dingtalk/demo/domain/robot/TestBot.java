@@ -1,6 +1,6 @@
 package com.hp.dingtalk.demo.domain.robot;
 
-import com.hp.dingding.component.application.IDingBot;
+import com.hp.dingtalk.component.application.IDingBot;
 import lombok.Getter;
 
 /**

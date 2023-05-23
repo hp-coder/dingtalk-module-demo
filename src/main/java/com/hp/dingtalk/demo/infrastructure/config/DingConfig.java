@@ -1,8 +1,8 @@
 package com.hp.dingtalk.demo.infrastructure.config;
 
-import com.hp.dingding.component.application.IDingBot;
-import com.hp.dingding.component.application.IDingMiniH5;
-import com.hp.dingding.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
+import com.hp.dingtalk.component.application.IDingBot;
+import com.hp.dingtalk.component.application.IDingMiniH5;
+import com.hp.dingtalk.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
 import com.hp.dingtalk.demo.domain.app.DummyMiniH5App;
 import com.hp.dingtalk.demo.domain.message.interactive_card.DummyInteractiveCardCallback;
 import com.hp.dingtalk.demo.domain.robot.TestBot;
@@ -27,7 +27,7 @@ public class DingConfig {
      */
     @Bean
     public IDingBot testBot() {
-        // TODO change the constructor parameters to your own DingTalk application info. app name is for log.
+        // TODO change the constructor parameters to your own DingTalk application info. app name is for readability.
         // Note that the app name is only for logging readability and is fully customizable by you
         return new TestBot("custom bot name", 16757015L, "your bot key", "your bot secret");
     }

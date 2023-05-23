@@ -1,7 +1,7 @@
 package com.hp.dingtalk.demo.domain.message.interactive_card;
 
-import com.hp.dingding.component.application.IDingBot;
-import com.hp.dingding.pojo.message.interactive.callback.AbstractDingInteractiveCardCallback;
+import com.hp.dingtalk.component.application.IDingBot;
+import com.hp.dingtalk.pojo.message.interactive.callback.AbstractDingInteractiveCardCallback;
 
 import java.util.List;
 
