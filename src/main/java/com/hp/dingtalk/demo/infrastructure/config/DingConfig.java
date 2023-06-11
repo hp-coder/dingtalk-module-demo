@@ -29,12 +29,13 @@ public class DingConfig {
     public IDingBot testBot() {
         // TODO change the constructor parameters to your own DingTalk application info. app name is for readability.
         // Note that the app name is only for logging readability and is fully customizable by you
-        return new TestBot("custom bot name", 16757015L, "your bot key", "your bot secret");
+        return new TestBot("custom bot name", -1L, "your bot key", "your bot secret");
     }
 
     @Bean
     public IDingMiniH5 dummyMiniH5App() {
-        return new DummyMiniH5App("custom app name", 16757015L, "your app key", "your app secret");
+        // TODO change the constructor parameters to your own DingTalk application info. app name is for readability.
+        return new DummyMiniH5App("custom app name", -1L, "your app key", "your app secret");
     }
 
     /**
@@ -45,6 +46,6 @@ public class DingConfig {
     public IDingInteractiveCardCallBack dummyInteractiveCardCallback() {
         // TODO change the constructor parameters to your own custom configuration.
         // Note that the third parameter, robots on your DingTalk, indicates that those robots will be used to register callback url when the system is ready.
-        return new DummyInteractiveCardCallback("your callback route key(no space)", "http://sdavw8.natappfree.cc/dummy/test/callback", Collections.singletonList(TestBot.class));
+        return new DummyInteractiveCardCallback("your callback route key(no space)", "[a site that can be accessed on the internet]/dummy/test/callback", Collections.singletonList(TestBot.class));
     }
 }
