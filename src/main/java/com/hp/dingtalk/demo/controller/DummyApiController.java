@@ -40,16 +40,16 @@ public class DummyApiController {
 
     @PostMapping("/test/interactive-card")
     public String testSendInteractiveCardMessage() {
-        final DingBotMessageHandler dingBotMessageHandler = new DingBotMessageHandler();
-        final DingUserHandler dingUserHandler = new DingUserHandler();
+        final TestBot app = DingAppFactory.app(TestBot.class);
+        final DingBotMessageHandler dingBotMessageHandler = new DingBotMessageHandler(app);
+        final DingUserHandler dingUserHandler = new DingUserHandler(app);
         final DummyInteractiveCard card = new DummyInteractiveCard(dummyInteractiveCardCallback, String.valueOf(System.currentTimeMillis()))
                 .setDummyName(" Hello Human ")
                 .setOtherInformation(" Surprise Mother发卡... ")
                 .setButton(0);
-        final TestBot app = DingAppFactory.app(TestBot.class);
         // TODO change the second parameter to a phone number that exists in your organization.
-        final String dingTalkUserId = dingUserHandler.findUserIdByMobile(app, "The phone number that equals the phone number on the DingTalk profile");
-        final String outTrackId = dingBotMessageHandler.sendInteractiveMsgToIndividual(app, Collections.singletonList(dingTalkUserId), card);
+        final String dingTalkUserId = dingUserHandler.findUserIdByMobile("The phone number that equals the phone number on the DingTalk profile");
+        final String outTrackId = dingBotMessageHandler.sendInteractiveMsgToIndividual(Collections.singletonList(dingTalkUserId), card);
         LOCAL_CACHE.putIfAbsent(outTrackId, card);
         return "successfully sent, and the outTrackId is: " + outTrackId;
     }
@@ -67,7 +67,8 @@ public class DummyApiController {
                 .setOtherInformation(" Updated Time: " + LocalDateTime.now())
                 .setButton(1);
         // openConversationId 为null 钉钉根据卡片实例id更新卡片
-        new DingBotMessageHandler().updateInteractiveMsg(DingAppFactory.app(TestBot.class), null, msg);
+        final TestBot app = DingAppFactory.app(TestBot.class);
+        new DingBotMessageHandler(app).updateInteractiveMsg(null, msg);
     }
 
 
