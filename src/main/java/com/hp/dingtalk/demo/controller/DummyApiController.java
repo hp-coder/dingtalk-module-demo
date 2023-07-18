@@ -2,11 +2,11 @@ package com.hp.dingtalk.demo.controller;
 
 import com.dingtalk.api.response.OapiV2UserGetResponse;
 import com.google.gson.Gson;
+import com.hp.dingtalk.component.application.IDingBot;
 import com.hp.dingtalk.component.factory.app.DingAppFactory;
 import com.hp.dingtalk.demo.domain.login.request.DingTalkLoginRequest;
 import com.hp.dingtalk.demo.domain.login.service.DingTalkLoginService;
 import com.hp.dingtalk.demo.domain.message.interactive_card.DummyInteractiveCard;
-import com.hp.dingtalk.demo.domain.robot.TestBot;
 import com.hp.dingtalk.pojo.callback.DingInteractiveCardCallBackRequest;
 import com.hp.dingtalk.pojo.message.interactive.IDingInteractiveMsg;
 import com.hp.dingtalk.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
@@ -40,7 +40,7 @@ public class DummyApiController {
 
     @PostMapping("/test/interactive-card")
     public String testSendInteractiveCardMessage() {
-        final TestBot app = DingAppFactory.app(TestBot.class);
+        final IDingBot app = DingAppFactory.app(IDingBot.class);
         final DingBotMessageHandler dingBotMessageHandler = new DingBotMessageHandler(app);
         final DingUserHandler dingUserHandler = new DingUserHandler(app);
         final DummyInteractiveCard card = new DummyInteractiveCard(dummyInteractiveCardCallback, String.valueOf(System.currentTimeMillis()))
@@ -67,7 +67,7 @@ public class DummyApiController {
                 .setOtherInformation(" Updated Time: " + LocalDateTime.now())
                 .setButton(1);
         // openConversationId 为null 钉钉根据卡片实例id更新卡片
-        final TestBot app = DingAppFactory.app(TestBot.class);
+        final IDingBot app = DingAppFactory.app(IDingBot.class);
         new DingBotMessageHandler(app).updateInteractiveMsg(null, msg);
     }
 

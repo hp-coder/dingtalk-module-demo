@@ -31,12 +31,12 @@ public class DingConfig {
 
             @Override
             public String getCorpName() {
-                return null;
+                return "your corp name";
             }
 
             @Override
             public String getCorpId() {
-                return null;
+                return "your corp id";
             }
 
             @Override
@@ -67,12 +67,12 @@ public class DingConfig {
         return new IDingMiniH5() {
             @Override
             public String getCorpName() {
-                return null;
+                return "your corp name";
             }
 
             @Override
             public String getCorpId() {
-                return null;
+                return "your corp id";
             }
 
             @Override
