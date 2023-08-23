@@ -1,3 +1,14 @@
+# Prerequisite
+
+## Dependencies
+Please install these three projects to your local Maven repository before using this demo project.
+```shell
+# Install them in the given order
+https://github.com/hp-coder/common-bom.git
+https://github.com/hp-coder/common-base.git
+https://github.com/hp-coder/dingtalk-module.git
+```
+
 # Demo
 
 ## 机器人发送高级互动卡片
