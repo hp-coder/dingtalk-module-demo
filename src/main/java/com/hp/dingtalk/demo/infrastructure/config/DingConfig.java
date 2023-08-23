@@ -46,17 +46,17 @@ public class DingConfig {
 
             @Override
             public String getAppKey() {
-                return "your bot key";
+                return "dingrabulzsjioosaz9a";
             }
 
             @Override
             public String getAppSecret() {
-                return "your bot secret";
+                return "Awfl6yODsUClv_OZSgcmxHrvke8XDe9OvNxQ0usKb7LQV0FRGx0kuBsZFLv3KLeZ";
             }
 
             @Override
             public Long getAppId() {
-                return -1L;
+                return 16757015L;
             }
         };
     }
@@ -82,17 +82,17 @@ public class DingConfig {
 
             @Override
             public String getAppKey() {
-                return "your bot key";
+                return "dingsqepyhyc4gjblfmk";
             }
 
             @Override
             public String getAppSecret() {
-                return "your bot secret";
+                return "fG2xCUCkU7CFjMnw4uZCJXEdSyxxf5Ny-yNatWnwfZmP-ky5h_trT5rZW00eicst";
             }
 
             @Override
             public Long getAppId() {
-                return -1L;
+                return 2513620116L;
             }
         };
     }
@@ -101,6 +101,6 @@ public class DingConfig {
     public IDingInteractiveCardCallBack dummyInteractiveCardCallback() {
         // TODO change the constructor parameters to your own custom configuration.
         // Note that the third parameter, robots on your DingTalk, indicates that those robots will be used to register callback url when the system is ready.
-        return new DummyInteractiveCardCallback("your callback route key(no space)", "[a site that can be accessed on the internet]/dummy/test/callback", Collections.singletonList(IDingBot.class));
+        return new DummyInteractiveCardCallback("dummy_callback_key", "http://we2ckz.natappfree.cc/dummy/test/callback", Collections.singletonList(IDingBot.class));
     }
 }

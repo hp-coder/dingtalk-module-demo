@@ -35,12 +35,13 @@ public class DummyApiController {
 
     private final IDingInteractiveCardCallBack dummyInteractiveCardCallback;
     private final DingTalkLoginService dingTalkLoginService;
+    private final IDingBot dingBot;
 
     private static final Map<String, IDingInteractiveMsg> LOCAL_CACHE = new HashMap<>(16);
 
     @PostMapping("/test/interactive-card")
     public String testSendInteractiveCardMessage() {
-        final IDingBot app = DingAppFactory.app(IDingBot.class);
+        final IDingBot app = dingBot;
         final DingBotMessageHandler dingBotMessageHandler = new DingBotMessageHandler(app);
         final DingUserHandler dingUserHandler = new DingUserHandler(app);
         final DummyInteractiveCard card = new DummyInteractiveCard(dummyInteractiveCardCallback, String.valueOf(System.currentTimeMillis()))
