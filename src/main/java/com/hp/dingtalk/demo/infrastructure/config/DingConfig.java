@@ -101,6 +101,6 @@ public class DingConfig {
     public IDingInteractiveCardCallBack dummyInteractiveCardCallback() {
         // TODO change the constructor parameters to your own custom configuration.
         // Note that the third parameter, robots on your DingTalk, indicates that those robots will be used to register callback url when the system is ready.
-        return new DummyInteractiveCardCallback("dummy_callback_key", "http://we2ckz.natappfree.cc/dummy/test/callback", Collections.singletonList(IDingBot.class));
+        return new DummyInteractiveCardCallback("dummy_callback_key", "https://zwt2d.snunicom.com:9096/strPlatform-web/dingTalkCallBack/callBack", Collections.singletonList(IDingBot.class));
     }
 }
