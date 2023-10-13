@@ -74,8 +74,8 @@ public class DummyApiController {
 
 
     @PostMapping("/test/login")
-    public String login(@RequestBody DingTalkLoginRequest request) {
-        final OapiV2UserGetResponse.UserGetResponse userGetResponse = dingTalkLoginService.queryDingDing(request);
+    public String login(@RequestBody DingTalkLoginRequest request) throws Exception {
+        final OapiV2UserGetResponse.UserGetResponse userGetResponse = dingTalkLoginService.queryDingTalk(request);
         final String userid = userGetResponse.getUserid();
         /*
             ...后续查询系统用户信息校验等等

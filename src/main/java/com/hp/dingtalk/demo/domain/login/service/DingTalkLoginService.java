@@ -31,7 +31,7 @@ public class DingTalkLoginService {
      * @param request 扫码请求体
      * @return 用户详情
      */
-    public OapiV2UserGetResponse.UserGetResponse queryDingDing(DingTalkLoginRequest request) throws Exception {
+    public OapiV2UserGetResponse.UserGetResponse queryDingTalk(DingTalkLoginRequest request) throws Exception {
         final IDingMiniH5 app = DingAppFactory.app(IDingMiniH5.class);
         //旧版扫码登录
         if (StringUtils.isNotEmpty(request.getCode())) {
