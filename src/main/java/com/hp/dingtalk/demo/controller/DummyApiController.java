@@ -4,6 +4,8 @@ import com.dingtalk.api.response.OapiV2UserGetResponse;
 import com.google.gson.Gson;
 import com.hp.dingtalk.component.application.IDingBot;
 import com.hp.dingtalk.component.factory.app.DingAppFactory;
+import com.hp.dingtalk.config.DingTalkMiniH5Properties;
+import com.hp.dingtalk.config.DingTalkProperties;
 import com.hp.dingtalk.demo.domain.login.request.DingTalkLoginRequest;
 import com.hp.dingtalk.demo.domain.login.service.DingTalkLoginService;
 import com.hp.dingtalk.demo.domain.message.interactive_card.DummyInteractiveCard;
@@ -14,10 +16,7 @@ import com.hp.dingtalk.service.message.DingBotMessageHandler;
 import com.hp.dingtalk.service.user.DingUserHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -36,8 +35,16 @@ public class DummyApiController {
     private final IDingInteractiveCardCallBack dummyInteractiveCardCallback;
     private final DingTalkLoginService dingTalkLoginService;
     private final IDingBot dingBot;
+    private final DingTalkProperties dingTalkProperties;
 
     private static final Map<String, IDingInteractiveMsg> LOCAL_CACHE = new HashMap<>(16);
+
+    @GetMapping("/properties")
+    public String test(){
+        final DingTalkProperties property = dingTalkProperties;
+        final DingTalkMiniH5Properties miniH5 = property.getMiniH5();
+        return new Gson().toJson(property);
+    }
 
     @PostMapping("/test/interactive-card")
     public String testSendInteractiveCardMessage() {
@@ -46,10 +53,10 @@ public class DummyApiController {
         final DingUserHandler dingUserHandler = new DingUserHandler(app);
         final DummyInteractiveCard card = new DummyInteractiveCard(dummyInteractiveCardCallback, String.valueOf(System.currentTimeMillis()))
                 .setDummyName(" Hello Human ")
-                .setOtherInformation(" Surprise Mother发卡... ")
-                .setButton(0);
+                .setOtherInformation("  Some other info  ")
+                .setButton(1);
         // TODO change the second parameter to a phone number that exists in your organization.
-        final String dingTalkUserId = dingUserHandler.findUserIdByMobile("The phone number that equals the phone number on the DingTalk profile");
+        final String dingTalkUserId = dingUserHandler.findUserIdByMobile("18652743467");
         final String outTrackId = dingBotMessageHandler.sendInteractiveMsgToIndividual(Collections.singletonList(dingTalkUserId), card);
         LOCAL_CACHE.putIfAbsent(outTrackId, card);
         return "successfully sent, and the outTrackId is: " + outTrackId;

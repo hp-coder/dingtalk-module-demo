@@ -2,12 +2,12 @@ package com.hp.dingtalk.demo.infrastructure.config;
 
 import com.hp.dingtalk.component.application.IDingBot;
 import com.hp.dingtalk.component.application.IDingMiniH5;
-import com.hp.dingtalk.demo.domain.message.interactive_card.DummyInteractiveCardCallback;
 import com.hp.dingtalk.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Collections;
+import java.util.List;
 
 /**
  * 配置类
@@ -101,6 +101,21 @@ public class DingConfig {
     public IDingInteractiveCardCallBack dummyInteractiveCardCallback() {
         // TODO change the constructor parameters to your own custom configuration.
         // Note that the third parameter, robots on your DingTalk, indicates that those robots will be used to register callback url when the system is ready.
-        return new DummyInteractiveCardCallback("dummy_callback_key", "https://zwt2d.snunicom.com:9096/strPlatform-web/dingTalkCallBack/callBack", Collections.singletonList(IDingBot.class));
+        return new IDingInteractiveCardCallBack() {
+            @Override
+            public String getCallbackUrl() {
+                return "https://zwt2d.snunicom.com:9096/strPlatform-web/dingTalkCallBack/callBack";
+            }
+
+            @Override
+            public String getCallbackRouteKey() {
+                return "dummy_callback_key";
+            }
+
+            @Override
+            public List<Class<? extends IDingBot>> getDingBots() {
+                return Collections.singletonList(IDingBot.class);
+            }
+        };
     }
 }

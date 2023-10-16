@@ -3,3 +3,14 @@ server:
 spring:
   application:
     name: @artifactId@
+logging:
+  level:
+    root: info
+    com.hp: debug
+
+dingtalk:
+  miniH5:
+    event:
+      listener:
+        enabled: true
+      enabled: true

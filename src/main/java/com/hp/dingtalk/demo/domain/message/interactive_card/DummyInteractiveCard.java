@@ -27,6 +27,6 @@ public class DummyInteractiveCard extends AbstractDingInteractiveMsg {
      */
     public DummyInteractiveCard(IDingInteractiveCardCallBack callBack, String outTrackId) {
         // TODO change the templateId parameter to your own template id that you previously created on the DingTalk interactive card platform.
-        super(callBack, outTrackId, "your interactive card template id");
+        super(callBack, "fd0c7a4b-b41c-4ece-9798-bfc0c2693731.schema", outTrackId);
     }
 }
