@@ -61,7 +61,7 @@ public class DingTalkTest {
         dingInteractiveMessageHandler = new DingBotMessageHandler(bot);
         userHandler = new DingUserHandler(app);
         mediaHandler = new DingMediaHandler(app);
-        user = userHandler.findUserByMobile("18652743467");
+        user = userHandler.findUserByMobile("");
         assertThat(user).isNotNull();
         final MediaRequest request = new MediaRequest(DingMediaType.IMAGE, new File("/Users/programmer/Downloads/Logo_HuPeng-70-300x300px.png"));
         imageResponse = mediaHandler.upload(request);

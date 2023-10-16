@@ -56,7 +56,7 @@ public class DummyApiController {
                 .setOtherInformation("  Some other info  ")
                 .setButton(1);
         // TODO change the second parameter to a phone number that exists in your organization.
-        final String dingTalkUserId = dingUserHandler.findUserIdByMobile("18652743467");
+        final String dingTalkUserId = dingUserHandler.findUserIdByMobile("");
         final String outTrackId = dingBotMessageHandler.sendInteractiveMsgToIndividual(Collections.singletonList(dingTalkUserId), card);
         LOCAL_CACHE.putIfAbsent(outTrackId, card);
         return "successfully sent, and the outTrackId is: " + outTrackId;
