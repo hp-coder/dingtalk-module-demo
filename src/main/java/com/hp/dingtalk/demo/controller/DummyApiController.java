@@ -12,6 +12,8 @@ import com.hp.dingtalk.demo.domain.message.interactive_card.DummyInteractiveCard
 import com.hp.dingtalk.pojo.callback.DingInteractiveCardCallBackRequest;
 import com.hp.dingtalk.pojo.message.interactive.IDingInteractiveMsg;
 import com.hp.dingtalk.pojo.message.interactive.callback.IDingInteractiveCardCallBack;
+import com.hp.dingtalk.service.IDingInteractiveMessageHandler;
+import com.hp.dingtalk.service.IDingUserHandler;
 import com.hp.dingtalk.service.message.DingBotMessageHandler;
 import com.hp.dingtalk.service.user.DingUserHandler;
 import lombok.RequiredArgsConstructor;
@@ -49,15 +51,15 @@ public class DummyApiController {
     @PostMapping("/test/interactive-card")
     public String testSendInteractiveCardMessage() {
         final IDingBot app = dingBot;
-        final DingBotMessageHandler dingBotMessageHandler = new DingBotMessageHandler(app);
-        final DingUserHandler dingUserHandler = new DingUserHandler(app);
+        final IDingInteractiveMessageHandler handler = new DingBotMessageHandler(app);
+        final IDingUserHandler dingUserHandler = new DingUserHandler(app);
         final DummyInteractiveCard card = new DummyInteractiveCard(dummyInteractiveCardCallback, String.valueOf(System.currentTimeMillis()))
                 .setDummyName(" Hello Human ")
                 .setOtherInformation("  Some other info  ")
-                .setButton(1);
-        // TODO change the second parameter to a phone number that exists in your organization.
-        final String dingTalkUserId = dingUserHandler.findUserIdByMobile("");
-        final String outTrackId = dingBotMessageHandler.sendInteractiveMsgToIndividual(Collections.singletonList(dingTalkUserId), card);
+                .setButton(0);
+        // TODO change the parameter to a phone number that exists in your organization.
+        final String dingTalkUserId = dingUserHandler.findUserIdByMobile("phone number");
+        final String outTrackId = handler.sendInteractiveMsgToIndividual(Collections.singletonList(dingTalkUserId), card);
         LOCAL_CACHE.putIfAbsent(outTrackId, card);
         return "successfully sent, and the outTrackId is: " + outTrackId;
     }
