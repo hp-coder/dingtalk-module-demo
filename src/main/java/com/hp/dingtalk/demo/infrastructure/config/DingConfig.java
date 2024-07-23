@@ -104,7 +104,7 @@ public class DingConfig {
         return new IDingInteractiveCardCallBack() {
             @Override
             public String getCallbackUrl() {
-                return "https://zwt2d.snunicom.com:9096/strPlatform-web/dingTalkCallBack/callBack";
+                return "https://dummy.com/callBack";
             }
 
             @Override
